@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link href="css/style.css" rel="stylesheet" /> -->
+    <style>
+      /* css/style.css */
+
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        background-color: #1f2937;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      .nav-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+
+      .mobile-menu-button {
+        display: none;
+      }
+
+      .mobile-menu-icon {
+        padding: 8px;
+        background-color: transparent;
+        border: none;
+        color: #9ca3af;
+        cursor: pointer;
+        border-radius: 8px;
+      }
+
+      .mobile-menu-icon:hover {
+        background-color: #374151;
+        color: white;
+      }
+
+      .icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      .nav-main {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-img {
+        height: 32px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-link {
+        margin-left: 24px;
+      }
+
+      .nav-link a {
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #d1d5db;
+        text-decoration: none;
+        border-radius: 8px;
+      }
+
+      .nav-link a:hover {
+        background-color: #374151;
+        color: white;
+      }
+
+      .nav-link .active {
+        background-color: #111827;
+        color: white;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .notification-icon {
+        background-color: #1f2937;
+        padding: 8px;
+        border-radius: 50%;
+        color: #9ca3af;
+        cursor: pointer;
+        border: none;
+      }
+
+      .notification-icon:hover {
+        color: white;
+      }
+
+      .profile-dropdown {
+        position: relative;
+        margin-left: 12px;
+      }
+
+      .profile-icon {
+        background-color: #1f2937;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+
+      .profile-img {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .mobile-menu-links a {
+        display: block;
+        padding: 8px 12px;
+        font-size: 16px;
+        color: #d1d5db;
+        text-decoration: none;
+        border-radius: 8px;
+      }
+
+      .mobile-menu-links a:hover {
+        background-color: #374151;
+        color: white;
+      }
+
+      .mobile-menu-links .active {
+        background-color: #111827;
+        color: white;
+      }
+
+      .main-section {
+        margin-bottom: 48px;
+        margin-top: 56px;
+      }
+
+      .main-container {
+        display: flex;
+        flex-direction: column;
+        padding: 24px;
+      }
+
+      .content-left {
+        flex: 1;
+        text-align: center;
+        margin-top: 32px;
+      }
+
+      .main-title {
+        font-size: 48px;
+        font-weight: bold;
+      }
+
+      .highlight {
+        color: #2563eb;
+        font-weight: normal;
+      }
+
+      .main-description {
+        font-size: 24px;
+        color: #9ca3af;
+      }
+
+      .explore-button {
+        margin: 24px auto 0;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 16px 40px;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        background-color: #1e40af;
+        border-radius: 50px;
+        text-decoration: none;
+      }
+
+      .button:hover {
+        opacity: 0.7;
+      }
+
+      .content-right {
+        flex: 1;
+        text-align: center;
+      }
+
+      .content-right img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2563eb;
+        margin: 0 0 16px 48px;
+      }
+
+      .predictor-container {
+        background-color: #bfdbfe;
+        padding: 24px;
+        border-radius: 24px;
+        margin: 0 10px 36px;
+      }
+
+      .form-container {
+        background-color: #eff6ff;
+        padding: 24px;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .form-row {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+      }
+
+      .form-input {
+        width: 170px;
+        padding: 12px;
+        margin: 6px;
+        border-radius: 8px;
+        color: rgb(149, 149, 149);
+        border: 1px solid #ccc;
+        appearance: none; /* Remove default dropdown arrow */
+        background-color: #fff;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%23999" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position-x: calc(100% - 12px);
+        background-position-y: center;
+    }   
+
+    .form-input1 {
+        width: 150px;
+        padding: 12px;
+        margin: 6px;
+        border-radius: 8px;
+        color: rgb(149, 149, 149);
+        border: 1px solid #ccc;
+        appearance: none; /* Remove default dropdown arrow */
+        background-color: #fff;
+    }  
+      
+      .form-row a {
+        margin: 16px auto;
+      }
+
+      .rounded-div {
+        background-color: #eff6ff; /* Light blue background */
+  border-radius: 15px; /* Rounded corners */
+  padding: 20px; /* Padding inside the div */
+  text-align: center; /* Center the text inside the div */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a shadow */
+  margin: 24px 16px; /* Adjust margins for responsiveness */
+}
+
+.content {
+  font-size: 18px; /* Font size of the span */
+  color: rgb(149, 149, 149); /* Text color */
+}
+
+      @media (min-width: 768px) {
+        .rounded-div {
+    padding: 16px; /* Adjust padding for smaller screens */
+    margin: 16px 8px; /* Adjust margins for smaller screens */
+  }
+        .mobile-menu-button {
+          display: none;
+        }
+        .nav-links {
+          display: flex;
+          align-items: center;
+          margin-left: 24px;
+        }
+        .mobile-menu {
+          display: none;
+        }
+        .main-container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .content-left {
+          text-align: left;
+          margin: 0;
+        }
+        .main-title {
+          font-size: 60px;
+        }
+        .main-description {
+          text-align: left;
+        }
+        .explore-button {
+          margin: 24px 0;
+        }
+        .form-row {
+          flex-direction: row;
+          justify-content: space-around;
+        }
+        .form-input {
+          margin: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <div class="mobile-menu-button">
+            <button
+              type="button"
+              class="mobile-menu-icon"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="icon block"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+              <svg
+                class="icon hidden"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="nav-main">
+            <div class="logo">
+              <!-- <img
+                class="logo-img"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                alt="Your Company"
+              /> -->
+              <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background circle -->
+                <circle cx="50" cy="50" r="45" fill="#1e40af" />
+                
+                <!-- House shape -->
+                <rect x="30" y="40" width="40" height="40" fill="#fff" />
+                <polygon points="30,40 70,40 50,20" fill="#bfdbfe" />
+                
+                <!-- Roof -->
+                <polygon points="30,40 70,40 50,20" fill="#2563eb" />
+                
+                <!-- Chimney -->
+                <rect x="45" y="30" width="10" height="10" fill="#374151" />
+                
+                <!-- Text -->
+                <text x="50" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#fff">Rent</text>
+              </svg>
+              
+            </div>
+            <div class="nav-links">
+              <div class="nav-link">
+                <a href="#" class="active" aria-current="page">Home</a>
+              </div>
+              <div class="nav-link">
+                <a href="#">Services</a>
+              </div>
+              <div class="nav-link">
+                <a href="#">Owner</a>
+              </div>
+              <div class="nav-link">
+                <a href="#">Contact Us</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-right">
+            <button type="button" class="notification-icon">
+              <!-- <span class="sr-only">View notifications</span> -->
+              <svg
+                class="icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                />
+              </svg>
+            </button>
+
+            <!-- Profile dropdown -->
+            <div class="profile-dropdown">
+              <div>
+                <button
+                  type="button"
+                  class="profile-icon"
+                  id="user-menu-button"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  <!-- <span class="sr-only">Open user menu</span> -->
+                  <img
+                    class="profile-img"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-links">
+          <a href="#" class="active" aria-current="page">Dashboard</a>
+          <a href="#">Team</a>
+          <a href="#">Projects</a>
+          <a href="#">Calendar</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="main-section">
+      <div class="container main-container">
+        <div class="content-left">
+          <h1 class="main-title">
+            Find Your <br />
+            <span class="highlight">Dream Place</span>
+          </h1>
+          <p class="main-description">
+            Where Comfort Meet Convenience, Your Rental Journey Start Here
+          </p>
+          <!-- <div class="explore-button">
+            <a href="#" class="button">Explore More</a>
+          </div> -->
+        </div>
+
+        <!-- <div class="content-right">
+          <img
+            src="original-51a1a7f27bae24ac62ec14a790b52238 Background Removed.png"
+            alt="not visible"
+          />
+        </div> -->
+        <!-- <h3 class="section-title">House Rent Predictor</h3> -->
+      <div class="predictor-container">
+        <form method="post" class="form-container">
+          <div class="form-row">
+            <input class="form-input1"
+            name="BHK"
+            id="BHK"
+            required="1"
+            placeholder="BHK" />
+            
+            <input class="form-input1"
+            name="HouseSize"
+            id="HouseSize"
+            required="1"
+            placeholder="House size in sqrt feet" />
+
+            <input class="form-input1"
+            name="Floor"
+            id="Floor"
+            required="1"
+            placeholder="Which Floor?" />
+
+            <input class="form-input1"
+            name="Bathroom"
+            id="Bathroom"
+            required="1"
+            placeholder="No.of Bathroom" />
+                
+          </div>
+
+          <div class="form-row">
+            <select
+                class="form-input"
+                name="AreaType"
+                id="AreaType"
+                required="1"
+              >
+              <option value="" disabled selected>AreaType</option>
+              {% for areatype in AreaType %} 
+                <option value="{{areatype}}"> {{areatype}} </option>
+            {% endfor %}
+            </select>
+
+            <select
+                class="form-input"
+                name="City"
+                id="City"
+                required="1"
+              >
+              <option value="" disabled selected>City</option>
+              {% for city in City %} 
+                <option value="{{city}}"> {{city}} </option>
+            {% endfor %}
+            </select>
+
+            <select
+                class="form-input"
+                name="FurnishingStatus"
+                id="FurnishingStatus"
+                required="1"
+              >
+              <option value="" disabled selected>FurnishingStatus</option>
+              {% for furnishingstatus in FurnishingStatus %} 
+                <option value="{{furnishingstatus}}"> {{furnishingstatus}} </option>
+            {% endfor %}
+            </select>
+
+          </div>
+
+          <div class="form-row">
+            <button onclick="sendData()" href="#" class="button">Predict Price</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="rounded-div">
+        <span id="prediction" class="content">House Rent</span>
+    </div>
+
+    <script>
+        function form_handler(event) {
+            event.preventDefault();
+        }
+
+        function sendData() {
+            document.querySelector('form').addEventListener('submit', form_handler)
+
+            var fd = new FormData(document.querySelector('form'));
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('POST', '/predict', true);
+
+            document.getElementById('prediction').innerHTML="Predicting Price.....";
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    document.getElementById('prediction').innerHTML = "Your House Rent Prediction is: ₹" + xhr.responseText;
+                }
+            }
+
+            xhr.onload = function(){};
+            xhr.send(fd);
+        }
+    </script>
+
+  </body>
+</html>
